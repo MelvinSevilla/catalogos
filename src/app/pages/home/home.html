@@ -99,9 +99,9 @@
   <div class="page landscape-page department-page" style="padding: 1rem; backdrop-filter: brightness(0.7); "
     [style.backgroundImage]="'url(' + page.departamentoIMG + ')'">
 
-    <header class="dept-header">
-      <h1 class="dept-title">{{ page.name }}</h1>
-    </header>
+    <div class="dept-header">
+      <div class="dept-title">{{ page.name }}</div>
+    </div>
     <div class="areas-grid">
       @for (area of page.areas; track area.name + $index) {
       <div class="area-item">
