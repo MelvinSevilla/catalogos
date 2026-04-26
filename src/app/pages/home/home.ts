@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, AfterViewInit } from '@angular/core';
 
 @Component({
   selector: 'app-home',
@@ -8,7 +8,25 @@ import { Component } from '@angular/core';
   styleUrl: './home.css'
 })
 export class Home {
-  printCatalog() {
-    window.print();
+  printHorizontal() {
+    this.executePrint('landscape');
+  }
+
+  printVertical() {
+    this.executePrint('portrait');
+  }
+
+  private executePrint(mode: 'landscape' | 'portrait') {
+    const style = document.createElement('style');
+    style.id = 'dynamic-print-style';
+    style.innerHTML = `@page { size: letter ${mode}; margin: 0; }`;
+    document.head.appendChild(style);
+    document.body.classList.add(`print-mode-${mode}`);
+
+    setTimeout(() => {
+      window.print();
+      document.head.removeChild(style);
+      document.body.classList.remove(`print-mode-${mode}`);
+    }, 200);
   }
 }

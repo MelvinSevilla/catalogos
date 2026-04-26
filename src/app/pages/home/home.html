@@ -1,9 +1,15 @@
 <div class="catalog-wrapper">
-  <!-- Botón de Impresión -->
-  <button class="print-fab" (click)="printCatalog()">
-    <span class="icon">🖨️</span>
-    <span>Imprimir PDF</span>
-  </button>
+  <!-- Botones de Impresión -->
+  <div class="print-actions">
+    <button class="print-fab landscape-btn" (click)='printHorizontal()'>
+      <span class="icon">🌅</span>
+      <span>Horizontal</span>
+    </button>
+    <button class="print-fab portrait-btn" (click)='printVertical()'>
+      <span class="icon">📱</span>
+      <span>Vertical</span>
+    </button>
+  </div>
 
   <!-- PÁGINA 1: QUIÉNES SOMOS -->
   <div class="page landscape-page cover-page">
@@ -14,7 +20,6 @@
     <div class="quienes-somos-section">
       <div style="padding: 1rem;">
         <div class="section-title">¿Quiénes Somos?</div>
-        <!-- Espacio para imagen de cabecera de sección si se desea -->
         <div class="text-box-gradient"></div>
         <div class="description-text">
           <div>¿Qué tiene de especial el producto que ofrece? ¿Qué le diferencia de la competencia? Convenza a sus
@@ -85,7 +90,6 @@
         <div class="icon-box">
           <img src="assets/catalogo2.png" alt="Logo">
         </div>
-
       </div>
     </div>
   </div>
