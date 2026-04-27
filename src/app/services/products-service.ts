@@ -11,14 +11,14 @@ export class ProductsService {
   private apiUrl = environment.urlLaravel;
 
   getCatalogo(params: any) {
-    return this.http.post<any>(`${this.apiUrl}/catalogo`, params);
+    return this.http.post<any>(`${this.apiUrl}catalogo`, params);
   }
 
   getCatalogoPrecios(params: any) {
-    return this.http.post<any>(`${this.apiUrl}/catalogowithprices`, params);
+    return this.http.post<any>(`${this.apiUrl}catalogowithprices`, params);
   }
 
   getCatalogoPreciosMayoristas(params: any) {
-    return this.http.post<any>(`${this.apiUrl}/catalogowithbetterprices`, params);
+    return this.http.post<any>(`${this.apiUrl}catalogowithbetterprices`, params);
   }
 }
