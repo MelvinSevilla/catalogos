@@ -1,1 +1,175 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700;800;900&display=swap');
+
+html,
+body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    overflow-x: hidden;
+}
+
+:host {
+    display: block;
+    font-family: 'Inter', sans-serif;
+    background: #f3f3f3 !important;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+}
+
+/* Page Setup for Screen */
+.catalog-wrapper {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    background: #f3f3f3 !important;
+}
+
+.landscape-page {
+    width: 100%;
+    min-height: 100vh;
+    /* Cambiado de height a min-height para flexibilidad */
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+}
+
+/* --- MOBILE QUERIES --- */
+@media (max-width: 768px) {
+    .print-actions {
+        display: none !important;
+    }
+
+    .area-item {
+        width: 100% !important;
+    }
+
+    .identity-card {
+        border-right: none;
+        border-bottom: 1px solid #eee;
+    }
+
+    .identity-header {
+        margin-bottom: 2rem;
+    }
+
+    .landscape-page {
+        height: auto;
+        min-height: auto;
+        width: 100% !important;
+        overflow-x: hidden;
+    }
+
+    .quienes-somos-section {
+        padding: 3rem 1.5rem;
+    }
+}
+
+/* --- AJUSTES DE IMPRESIÓN (PDF) --- */
+@media print {
+    @page {
+        margin: 0;
+    }
+
+    body.print-mode-landscape .landscape-page {
+        width: 11in !important;
+        height: 8.5in !important;
+    }
+
+    body.print-mode-portrait .landscape-page {
+        width: 8.5in !important;
+        height: 11in !important;
+    }
+
+    body,
+    html,
+    :host {
+        background: white !important;
+        margin: 0 !important;
+        padding: 0 !important;
+    }
+
+    .print-actions {
+        display: none !important;
+    }
+
+    .landscape-page {
+        page-break-after: always !important;
+        display: flex !important;
+        overflow: hidden !important;
+        box-shadow: none !important;
+        border: none !important;
+        margin: 0 !important;
+        padding: 0 !important;
+    }
+
+    .quienes-somos-section,
+    .catalog-cover-page,
+    .card-header,
+    .header-section,
+    .cover-page,
+    .department-page,
+    .dept-header,
+    .area-item {
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+    }
+
+    .department-page {
+        background-size: cover !important;
+        background-position: center !important;
+    }
+
+    .areas-grid {
+        display: grid !important;
+        grid-template-columns: repeat(4, 1fr) !important;
+        gap: 10px !important;
+    }
+
+    .area-item {
+        background: linear-gradient(90deg, #c42129 0%, #2b395a 100%) !important;
+    }
+
+    .header-section,
+    .cover-page {
+        background: #f3f3f3 !important;
+    }
+
+    /* Escala fija para PDF */
+    .section-title {
+        font-size: 4rem !important;
+    }
+
+    .catalog-title {
+        font-size: 5rem !important;
+    }
+
+    .quote-text {
+        font-size: 3rem !important;
+    }
+
+    .card-header {
+        font-size: 1.6rem !important;
+    }
+
+    .identity-card {
+        min-height: 0;
+        flex: 1;
+    }
+
+    /* Grilla condicional */
+    .mision-vision-valores-grid {
+        grid-template-columns: repeat(3, 1fr) !important;
+    }
+
+    body.print-mode-portrait .mision-vision-valores-grid {
+        grid-template-columns: 1fr !important;
+    }
+
+    body.print-mode-portrait .section-title {
+        font-size: 3rem !important;
+    }
+}
+
 /* You can add global styles to this file, and also import other style files */

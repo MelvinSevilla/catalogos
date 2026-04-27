@@ -1,0 +1,105 @@
+/* --- PÁGINA DE DEPARTAMENTOS --- */
+.department-page {
+    background-size: cover;
+    background-position: center;
+    min-height: 100vh !important;
+}
+
+.dept-header {
+    background: #2b395a;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    text-align: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.dept-title {
+    font-size: clamp(2.5rem, 8vw, 6rem);
+    color: #c42129;
+    font-weight: 500;
+    margin: 0;
+    text-transform: uppercase;
+    letter-spacing: 5px;
+}
+
+/* Ajuste Responsivo (Paso a paso) */
+.areas-grid {
+    margin-top: auto;
+    margin-bottom: auto;
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    /* 1 columna en móvil muy pequeño */
+    gap: 2rem;
+    width: 100%;
+}
+
+@media (min-width: 480px) {
+    .areas-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (min-width: 768px) {
+    .areas-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (min-width: 1024px) {
+    .areas-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+
+    /* 4 columnas clásicas */
+}
+
+.area-item {
+    background: linear-gradient(90deg, #c42129 0%, #2b395a 100%);
+    padding: .5rem;
+    border-radius: 12px;
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    cursor: pointer;
+    width: 70%;
+    height: fit-content;
+    margin: auto;
+    padding: auto;
+}
+
+.area-item:hover {
+    transform: scale(1.05);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+    z-index: 10;
+}
+
+.area-card {
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    height: fit-content;
+    background: transparent;
+    /* El fondo lo da el item */
+}
+
+.area-image {
+    border-radius: 12px;
+    background: white;
+    padding: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.area-image img {
+    width: 4rem;
+    height: 4rem;
+    object-fit: contain;
+}
+
+.area-name {
+    padding: 0.8rem 0.4rem 0.4rem;
+    text-align: center;
+    font-weight: 800;
+    color: white;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+}

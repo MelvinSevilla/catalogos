@@ -14,7 +14,7 @@
   <!-- PÁGINA 1: QUIÉNES SOMOS -->
   <div class="page landscape-page cover-page">
     <div class="header-section">
-      <img src="assets/hogaris2.jpeg" alt="Logo" class="main-logo">
+      <img [routerLink]="'/'" src="assets/hogaris2.jpeg" alt="Logo" class="main-logo">
     </div>
 
     <div class="quienes-somos-section">
@@ -81,39 +81,19 @@
       <div class="catalog-title">Catálogo de<br>Productos</div>
 
       <div class="catalog-icons-grid">
-        <div class="icon-box">
+        <div class="icon-box" routerLink="/hogar">
           <img src="assets/catalogo3.png" alt="Logo">
         </div>
-        <div class="icon-box">
+        <div class="icon-box" routerLink="/autorepuestos">
           <img src="assets/catalogo1.png" alt="Logo">
         </div>
-        <div class="icon-box">
+        <div class="icon-box" routerLink="/ferreteria">
           <img src="assets/catalogo2.png" alt="Logo">
         </div>
       </div>
     </div>
   </div>
 
-  <!-- PÁGINAS DE DEPARTAMENTOS (DINÁMICAS Y PAGINADAS) -->
-  @for (page of paginatedDepartments; track $index) {
-  <div class="page landscape-page department-page" style="padding: 1rem; backdrop-filter: brightness(0.7); "
-    [style.backgroundImage]="'url(' + page.departamentoIMG + ')'">
-
-    <div class="dept-header">
-      <div class="dept-title">{{ page.name }}</div>
-    </div>
-    <div class="areas-grid">
-      @for (area of page.areas; track area.name + $index) {
-      <div class="area-item">
-        <div class="area-card">
-          <div class="area-image">
-            <img [src]="area.image" [alt]="area.name">
-          </div>
-          <div class="area-name">{{ area.name }}</div>
-        </div>
-      </div>
-      }
-    </div>
-  </div>
-  }
 </div>
+
+<router-outlet></router-outlet>
