@@ -1,23 +1,50 @@
-<app-home></app-home>
 <!-- PÁGINAS DE DEPARTAMENTOS (DINÁMICAS Y PAGINADAS) -->
-@for (page of paginatedDepartments; track $index) {
-<div class="page landscape-page department-page" style="padding: 1rem; backdrop-filter: brightness(0.7); "
-    [style.backgroundImage]="'url(' + page.departamentoIMG + ')'">
+<div id="areas-start" *ngIf="paginatedDepartments.length > 0">
+    <div *ngFor="let pageDep of paginatedDepartments">
+        <div class="page landscape-page department-page"
+            [style.background-image]="'url(' + departamento.imagenUrl + ')'">
 
-    <div class="dept-header">
-        <div class="dept-title">{{ page.name }}</div>
-    </div>
-    <div class="areas-grid">
-        @for (area of page.areas; track area.name + $index) {
-        <div class="area-item">
-            <div class="area-card">
-                <div class="area-image">
-                    <img [src]="area.image" [alt]="area.name">
+            <div class="dept-header">
+                <div class="dept-title">{{ departamento.departamento }}</div>
+            </div>
+            <div class="areas-grid">
+                @for (area of pageDep.areas; track area.name + $index) {
+                <div class="area-item" (click)="navigateToProducts(area)">
+                    <div class="area-card">
+                        <div class="area-image">
+                            <img [src]="area.imagenArea || 'assets/hogaris2.jpeg'" [alt]="area.area ">
+                        </div>
+                        <div class="area-name">{{ area.area }}</div>
+                    </div>
                 </div>
-                <div class="area-name">{{ area.name }}</div>
+                }
             </div>
         </div>
-        }
     </div>
 </div>
-}
+
+
+<div id="productos-start" *ngIf="paginatedAreas.length > 0">
+    <div *ngFor="let area of paginatedAreas">
+        <div class="page landscape-page department-page">
+
+            <div class="dept-header">
+                <div class="dept-title">{{ area.area }}</div>
+            </div>
+
+            <div class="areas-grid">
+                @for (producto of area.productos; track producto.codigo) {
+                <div class="area-item">
+                    <div class="area-card">
+                        <div class="area-image">
+                            <img [src]="producto.imagen || 'assets/hogaris2.jpeg'" [alt]="producto.descripcion ">
+                        </div>
+                        <div class="area-name">{{ producto.descripcion }}</div>
+                    </div>
+                </div>
+                }
+            </div>
+        </div>
+    </div>
+
+</div>

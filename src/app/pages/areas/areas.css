@@ -3,6 +3,7 @@
     background-size: cover;
     background-position: center;
     min-height: 100vh !important;
+    padding: 1rem;
 }
 
 .dept-header {
