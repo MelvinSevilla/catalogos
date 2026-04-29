@@ -22,6 +22,7 @@ export class Areas implements OnInit {
   areas: any = [];
   paginatedDepartments: any = [];
   paginatedAreas: any = [];
+  noDataFound: boolean = false;
 
   ngOnInit() {
     const depto = this.router.url.split('/').pop();
@@ -32,6 +33,28 @@ export class Areas implements OnInit {
           this.departamento.imagenUrl = data.departamento.imagenDepto;
         }
         this.areas = data.areas || [];
+        if (this.areas.length == 0) {
+          this.ngZone.run(() => {
+            this.noDataFound = true;
+            this.cdRef.detectChanges();
+            this.cdRef.markForCheck();
+
+          });
+          setTimeout(() => {
+            this.ngZone.run(() => {
+              this.noDataFound = false;
+              this.cdRef.detectChanges();
+              this.cdRef.markForCheck();
+
+            });
+          }, 2000);
+        } else {
+          this.ngZone.run(() => {
+            this.noDataFound = false;
+            this.cdRef.markForCheck();
+            this.cdRef.markForCheck();
+          });
+        }
         setTimeout(() => {
           this.calculatePaginatedDepartments();
         }, 50);

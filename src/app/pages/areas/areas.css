@@ -1,4 +1,27 @@
 /* --- PÁGINA DE DEPARTAMENTOS --- */
+.no-areas-message {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1000;
+    background-color: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding: 20px 30px;
+    border-radius: 8px;
+    font-size: 1.2rem;
+    text-align: center;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    animation: fadeInOut 5s ease-in-out forwards;
+}
+
+@keyframes fadeInOut {
+    0% { opacity: 0; transform: translate(-50%, -40%); }
+    10% { opacity: 1; transform: translate(-50%, -50%); }
+    90% { opacity: 1; transform: translate(-50%, -50%); }
+    100% { opacity: 0; transform: translate(-50%, -60%); }
+}
+
 .department-page {
     background-size: cover;
     background-position: center;
@@ -27,32 +50,47 @@
 .areas-grid {
     margin-top: auto;
     margin-bottom: auto;
-    display: grid;
-    grid-template-columns: repeat(1, 1fr);
-    /* 1 columna en móvil muy pequeño */
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
     gap: 2rem;
     width: 100%;
 }
 
-@media (min-width: 480px) {
-    .areas-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
+.area-item {
+    width: calc((100% - 2rem) / 2); /* 2 columns default */
 }
 
 @media (min-width: 768px) {
-    .areas-grid {
-        grid-template-columns: repeat(3, 1fr);
+    .area-item {
+        width: calc((100% - 4rem) / 3); /* 3 columns */
     }
 }
 
 @media (min-width: 1024px) {
-    .areas-grid {
-        grid-template-columns: repeat(4, 1fr);
+    .area-item {
+        width: calc((100% - 6rem) / 4); /* 4 columns */
     }
-
-    /* 4 columnas clásicas */
 }
+
+@media (min-width: 1400px) {
+    .area-item {
+        width: calc((100% - 8rem) / 5); /* 5 columns */
+    }
+}
+
+@media (min-width: 1600px) {
+    .area-item {
+        width: calc((100% - 10rem) / 6); /* 6 columns */
+    }
+}
+
+@media (min-width: 1800px) {
+    .area-item {
+        width: calc((100% - 12rem) / 7); /* 7 columns */
+    }
+}
+
 
 .area-item {
     background: linear-gradient(90deg, #c42129 0%, #2b395a 100%);
@@ -60,10 +98,9 @@
     border-radius: 12px;
     transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     cursor: pointer;
-    width: 70%;
     height: fit-content;
-    margin: auto;
-    padding: auto;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .area-item:hover {

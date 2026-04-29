@@ -79,9 +79,8 @@
     border-radius: 12px;
     transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     cursor: pointer;
-    height: fit-content;
-    padding: auto;
     width: 100%;
+    height: fit-content;
 }
 
 .areaprod-item:hover {

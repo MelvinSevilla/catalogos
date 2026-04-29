@@ -1,4 +1,8 @@
 <!-- PÁGINAS DE DEPARTAMENTOS (DINÁMICAS Y PAGINADAS) -->
+<div class="no-areas-message" *ngIf="noDataFound">
+    No hay áreas para este departamento
+</div>
+
 <div id="areas-start" *ngIf="paginatedDepartments.length > 0">
     <div *ngFor="let pageDep of paginatedDepartments">
         <div class="page landscape-page department-page"

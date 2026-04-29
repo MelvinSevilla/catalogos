@@ -10,7 +10,7 @@ export const routes: Routes = [
         loadComponent: () => import('./pages/areas/areas').then(m => m.Areas)
       },
       {
-        path: 'autorepuestos',
+        path: 'autorepuesto',
         loadComponent: () => import('./pages/areas/areas').then(m => m.Areas)
       },
       {
