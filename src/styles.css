@@ -73,6 +73,19 @@ body {
         margin: 0;
     }
 
+    @page products {
+        margin: 15mm;
+        margin-top: 3rem; /* Margen superior amplio para páginas nuevas */
+    }
+
+    @page products:first {
+        margin-top: 15mm; /* Intenta mantener el margen original en la página del header */
+    }
+
+    .areaprod-page {
+        page: products;
+    }
+
     body.print-mode-landscape .landscape-page {
         width: 11in !important;
         height: 8.5in !important;
@@ -88,7 +101,7 @@ body {
     :host {
         background: white !important;
         margin: 0 !important;
-        padding: 0 !important;
+        padding: 0 0 2rem 0 !important;
     }
 
     .print-actions {
@@ -128,15 +141,49 @@ body {
     }
 
     .areas-grid {
-        display: grid !important;
-        grid-template-columns: repeat(4, 1fr) !important;
-        gap: 10px !important;
+        display: flex !important;
+        flex-wrap: wrap !important;
+        gap: 15px !important;
+        justify-content: center !important;
+    }
+
+    .area-item {
+        width: calc(25% - 15px) !important;
+        box-sizing: border-box !important;
+        margin: 0 !important;
+        page-break-inside: avoid !important;
+        break-inside: avoid !important;
+    }
+
+    .areaprod-grid {
+        margin: 1rem 0 1rem 0;
+        display: block !important;
+        text-align: center !important;
+        margin-top: 2rem !important;
+        font-size: 0 !important;
+    }
+
+    .areaprod-container {
+        display: inline-block !important;
+        vertical-align: top !important;
+        width: 22% !important;
+        margin: 1rem 1.5% 0 1.5% !important;
+        page-break-inside: avoid !important;
+        break-inside: avoid !important;
+        font-size: 1rem !important;
+        text-align: left !important;
+        box-sizing: border-box !important;
     }
 
     .area-item,
     .areaprod-item,
     .areaprod-header {
+        margin-bottom: 0rem !important;
         background: linear-gradient(90deg, #c42129 0%, #2b395a 100%) !important;
+    }
+
+    .areaprod-header {
+        margin-bottom: 0rem !important;
     }
 
     .header-section,

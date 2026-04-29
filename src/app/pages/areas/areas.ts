@@ -91,7 +91,13 @@ export class Areas implements OnInit {
   }
 
   navigateToProducts(area: any) {
-    this.router.navigate(['/products', area.area]);
+    const index = this.paginatedAreas.findIndex((a: any) => a === area);
+    if (index !== -1) {
+      const element = this.document.getElementById(`area-header-${index}`);
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    }
   }
 
 }

@@ -16,10 +16,25 @@
 }
 
 @keyframes fadeInOut {
-    0% { opacity: 0; transform: translate(-50%, -40%); }
-    10% { opacity: 1; transform: translate(-50%, -50%); }
-    90% { opacity: 1; transform: translate(-50%, -50%); }
-    100% { opacity: 0; transform: translate(-50%, -60%); }
+    0% {
+        opacity: 0;
+        transform: translate(-50%, -40%);
+    }
+
+    10% {
+        opacity: 1;
+        transform: translate(-50%, -50%);
+    }
+
+    90% {
+        opacity: 1;
+        transform: translate(-50%, -50%);
+    }
+
+    100% {
+        opacity: 0;
+        transform: translate(-50%, -60%);
+    }
 }
 
 .department-page {
@@ -58,36 +73,42 @@
 }
 
 .area-item {
-    width: calc((100% - 2rem) / 2); /* 2 columns default */
+    width: calc((100% - 2rem) / 2);
+    /* 2 columns default */
 }
 
 @media (min-width: 768px) {
     .area-item {
-        width: calc((100% - 4rem) / 3); /* 3 columns */
+        width: calc((100% - 4rem) / 3);
+        /* 3 columns */
     }
 }
 
 @media (min-width: 1024px) {
     .area-item {
-        width: calc((100% - 6rem) / 4); /* 4 columns */
+        width: calc((100% - 6rem) / 4);
+        /* 4 columns */
     }
 }
 
 @media (min-width: 1400px) {
     .area-item {
-        width: calc((100% - 8rem) / 5); /* 5 columns */
+        width: calc((100% - 8rem) / 5);
+        /* 5 columns */
     }
 }
 
 @media (min-width: 1600px) {
     .area-item {
-        width: calc((100% - 10rem) / 6); /* 6 columns */
+        width: calc((100% - 10rem) / 6);
+        /* 6 columns */
     }
 }
 
 @media (min-width: 1800px) {
     .area-item {
-        width: calc((100% - 12rem) / 7); /* 7 columns */
+        width: calc((100% - 12rem) / 7);
+        /* 7 columns */
     }
 }
 
@@ -165,7 +186,6 @@
 .areaprod-header {
     background: linear-gradient(90deg, #c42129 0%, #2b395a 100%);
     padding: .5rem;
-    margin-bottom: 1rem;
     text-align: center;
 }
 

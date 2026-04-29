@@ -1,16 +1,26 @@
-import { Component, AfterViewInit } from '@angular/core';
-import { RouterLink, RouterOutlet } from "@angular/router";
+import { CommonModule } from '@angular/common';
+import { Component, AfterViewInit, inject, OnInit } from '@angular/core';
+import { Router, RouterLink, RouterOutlet } from "@angular/router";
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [RouterLink, RouterOutlet],
+  imports: [RouterLink, RouterOutlet, CommonModule],
   templateUrl: './home.html',
   styleUrl: './home.css'
 })
-export class Home {
+export class Home implements OnInit {
 
+  private router = inject(Router);
+  showpdfButton = false;
 
+  ngOnInit(): void {
+    if (this.router.url.includes('/pdf')) {
+      this.showpdfButton = true;
+    }
+    console.log(this.showpdfButton);
+
+  }
   printHorizontal() {
     this.executePrint('landscape');
   }

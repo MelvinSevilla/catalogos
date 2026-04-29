@@ -29,10 +29,10 @@
 
 
 <div id="productos-start" *ngIf="paginatedAreas.length > 0">
-    <div *ngFor="let area of paginatedAreas">
+    <div *ngFor="let area of paginatedAreas; let i = index">
         <div class="areaprod-page">
 
-            <div class="areaprod-header">
+            <div class="areaprod-header" [id]="'area-header-' + i">
                 <div class="areaprod-title">{{ area.area }}</div>
             </div>
 
