@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-productos',
@@ -6,6 +6,9 @@ import { Component } from '@angular/core';
   templateUrl: './productos.html',
   styleUrl: './productos.css',
 })
+
+
 export class Productos {
+  @Input() productos: any[] = [];
 
 }

@@ -26,24 +26,14 @@
 
 <div id="productos-start" *ngIf="paginatedAreas.length > 0">
     <div *ngFor="let area of paginatedAreas">
-        <div class="page landscape-page department-page">
+        <div class="areaprod-page">
 
-            <div class="dept-header">
-                <div class="dept-title">{{ area.area }}</div>
+            <div class="areaprod-header">
+                <div class="areaprod-title">{{ area.area }}</div>
             </div>
 
-            <div class="areas-grid">
-                @for (producto of area.productos; track producto.codigo) {
-                <div class="area-item">
-                    <div class="area-card">
-                        <div class="area-image">
-                            <img [src]="producto.imagen || 'assets/hogaris2.jpeg'" [alt]="producto.descripcion ">
-                        </div>
-                        <div class="area-name">{{ producto.descripcion }}</div>
-                    </div>
-                </div>
-                }
-            </div>
+            <app-productos [productos]="area.productos"></app-productos>
+
         </div>
     </div>
 

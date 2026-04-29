@@ -1,1 +1,18 @@
-<p>productos works!</p>
+<div class="areaprod-grid">
+    @for (producto of productos; track producto.codigo) {
+    <div class="areaprod-container">
+        <div class="areaprod-item">
+            <div class="areaprod-card">
+                <div class="areaprod-image">
+                    <img [src]="producto.imagen || 'assets/hogaris2.jpeg'" [alt]="producto.descripcion ">
+                </div>
+                <div class="areaprod-name">{{ producto.descripcion }}</div>
+            </div>
+        </div>
+        <div class="areaprod-footer">
+            <div class="areaprod-codetittle">Código Producto:</div>
+            <div class="areaprod-code">{{producto.codigo}}</div>
+        </div>
+    </div>
+    }
+</div>

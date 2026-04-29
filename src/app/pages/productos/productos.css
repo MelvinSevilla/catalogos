@@ -1,0 +1,140 @@
+/* --- PÁGINA DE AREA PRODS --- */
+.areaprod-page {
+    background-color: #f3f3f3;
+    padding: 1rem;
+}
+
+.areaprod-header {
+    background: linear-gradient(90deg, #c42129 0%, #2b395a 100%);
+    padding: .5rem;
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+.areaprod-title {
+    font-size: 1rem;
+    font-weight: 800;
+    color: #fff;
+    margin: 0;
+    text-transform: uppercase;
+}
+
+.areaprod-grid {
+    margin-top: auto;
+    margin-bottom: auto;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+    width: 100%;
+}
+
+@media (min-width: 480px) {
+    .areaprod-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (min-width: 768px) {
+    .areaprod-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (min-width: 1024px) {
+    .areaprod-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+@media (min-width: 1400px) {
+    .areaprod-grid {
+        grid-template-columns: repeat(5, 1fr);
+    }
+}
+
+@media (min-width: 1600px) {
+    .areaprod-grid {
+        grid-template-columns: repeat(6, 1fr);
+    }
+}
+
+@media (min-width: 1800px) {
+    .areaprod-grid {
+        grid-template-columns: repeat(7, 1fr);
+    }
+}
+
+
+.areaprod-container {
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+    page-break-inside: avoid;
+    break-inside: avoid;
+}
+
+.areaprod-item {
+    background: linear-gradient(90deg, #c42129 0%, #2b395a 100%);
+    padding: .1rem;
+    border-radius: 12px;
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    cursor: pointer;
+    height: fit-content;
+    padding: auto;
+    width: 100%;
+}
+
+.areaprod-item:hover {
+    transform: scale(1.05);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+    z-index: 10;
+}
+
+.areaprod-card {
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    height: fit-content;
+    background: transparent;
+    /* El fondo lo da el item */
+}
+
+.areaprod-image {
+    border-radius: 10px;
+    background: white;
+    padding: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.areaprod-image img {
+    width: 4rem;
+    height: 4rem;
+    object-fit: contain;
+}
+
+.areaprod-name {
+    padding: 0.8rem 0.4rem 0.4rem;
+    text-align: center;
+    font-weight: 800;
+    color: white;
+    font-size: 0.7rem;
+    text-transform: uppercase;
+}
+
+.areaprod-footer {
+    text-transform: uppercase;
+    font-size: .7rem;
+    margin-top: .5rem;
+}
+
+.areaprod-codetittle {
+    color: #2b395a;
+    font-weight: 800;
+}
+
+.areaprod-code {
+    color: #000;
+    font-weight: bold;
+}

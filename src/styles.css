@@ -6,11 +6,12 @@ body {
     padding: 0;
     width: 100%;
     overflow-x: hidden;
+    font-family: 'Roboto', sans-serif;
 }
 
 :host {
     display: block;
-    font-family: 'Inter', sans-serif;
+    font-family: 'Roboto', sans-serif;
     background: #f3f3f3 !important;
     margin: 0;
     padding: 0;
@@ -111,9 +112,14 @@ body {
     .cover-page,
     .department-page,
     .dept-header,
-    .area-item {
+    .area-item,
+    .areaprod-page,
+    .areaprod-header,
+    .areaprod-item,
+    .areaprod-image {
         -webkit-print-color-adjust: exact !important;
         print-color-adjust: exact !important;
+        color-adjust: exact !important;
     }
 
     .department-page {
@@ -127,7 +133,9 @@ body {
         gap: 10px !important;
     }
 
-    .area-item {
+    .area-item,
+    .areaprod-item,
+    .areaprod-header {
         background: linear-gradient(90deg, #c42129 0%, #2b395a 100%) !important;
     }
 

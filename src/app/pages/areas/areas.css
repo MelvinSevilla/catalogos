@@ -104,3 +104,38 @@
     font-size: 0.9rem;
     text-transform: uppercase;
 }
+
+
+/* --- PÁGINA DE AREA PRODS --- */
+.areaprod-page {
+    background-color: #f3f3f3;
+    padding: 1rem;
+}
+
+@media print {
+    .department-page {
+        padding: 2rem !important;
+    }
+
+    .areaprod-page {
+        page-break-before: always;
+        break-before: page;
+        padding: 2rem !important;
+        background-color: transparent !important;
+    }
+}
+
+.areaprod-header {
+    background: linear-gradient(90deg, #c42129 0%, #2b395a 100%);
+    padding: .5rem;
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+.areaprod-title {
+    font-size: 1rem;
+    font-weight: 800;
+    color: #fff;
+    margin: 0;
+    text-transform: uppercase;
+}
