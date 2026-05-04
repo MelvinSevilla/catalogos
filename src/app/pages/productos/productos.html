@@ -2,9 +2,12 @@
     @for (producto of productos; track producto.codigo) {
     <div class="areaprod-container">
         <div class="areaprod-item">
+            @if (producto.precio) {
+            <div class="areaprod-price">L. {{ producto.precio }}</div>
+            }
             <div class="areaprod-card">
                 <div class="areaprod-image">
-                    <img [src]="producto.imagen || 'assets/hogaris2.jpeg'" [alt]="producto.descripcion ">
+                    <img [src]="producto.imagen || 'hogaris2.jpeg'" [alt]="producto.descripcion ">
                 </div>
                 <div class="areaprod-name">{{ producto.descripcion }}</div>
             </div>

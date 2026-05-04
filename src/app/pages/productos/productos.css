@@ -74,6 +74,7 @@
 }
 
 .areaprod-item {
+    position: relative;
     background: linear-gradient(90deg, #c42129 0%, #2b395a 100%);
     padding: .1rem;
     border-radius: 12px;
@@ -81,6 +82,21 @@
     cursor: pointer;
     width: 100%;
     height: fit-content;
+}
+
+.areaprod-price {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    background-color: #c42129;
+    color: white;
+    padding: 2px 8px;
+    border-radius: 12px;
+    font-size: 0.75rem;
+    font-weight: 800;
+    z-index: 10;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.3);
 }
 
 .areaprod-item:hover {

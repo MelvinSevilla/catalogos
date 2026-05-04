@@ -18,7 +18,7 @@ export class Areas implements OnInit {
   private cdRef = inject(ChangeDetectorRef);
   private document = inject(DOCUMENT);
 
-  departamento: any = { departamento: '', imagenUrl: 'assets/backgroundCatalogos.png' };
+  departamento: any = { departamento: '', imagenUrl: 'backgroundCatalogos.png' };
   areas: any = [];
   paginatedDepartments: any = [];
   paginatedAreas: any = [];
