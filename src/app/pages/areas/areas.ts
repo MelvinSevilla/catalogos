@@ -1,4 +1,4 @@
-import { Component, inject, NgZone, OnInit, ChangeDetectorRef, PLATFORM_ID } from '@angular/core';
+import { Component, inject, NgZone, OnInit, ChangeDetectorRef, PLATFORM_ID, HostListener } from '@angular/core';
 import { CommonModule, NgFor, NgIf, DOCUMENT, isPlatformBrowser } from '@angular/common';
 import { Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
@@ -219,6 +219,14 @@ export class Areas implements OnInit {
   closeAllMenus() {
     this.areas.forEach((a: any) => a.showMenu = false);
     this.cdRef.markForCheck();
+  }
+
+  @HostListener('document:click')
+  clickout() {
+    let hasOpenMenu = this.areas.some((a: any) => a.showMenu);
+    if (hasOpenMenu) {
+      this.closeAllMenus();
+    }
   }
 
   filterByCategory(area: any, cat: any, event: Event) {
