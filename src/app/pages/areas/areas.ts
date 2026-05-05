@@ -29,6 +29,33 @@ export class Areas implements OnInit {
   searchTerm: string = '';
   showSearch: boolean = false;
   isFiltered: boolean = false;
+  showScrollTop: boolean = false;
+
+  @HostListener('window:scroll', [])
+  onWindowScroll() {
+    if (isPlatformBrowser(this.platformId)) {
+      const element = this.document.getElementById('areas-start');
+      let shouldShow = false;
+
+      if (element) {
+        const rect = element.getBoundingClientRect();
+        // Si la parte inferior de 'areas-start' está fuera del área visible por arriba,
+        // significa que el usuario ya está viendo los productos.
+        shouldShow = rect.bottom <= 0;
+      } else {
+        // Fallback en caso de que no se encuentre el elemento
+        const scrollPosition = window.scrollY || document.documentElement.scrollTop;
+        shouldShow = scrollPosition > window.innerHeight * 1.5;
+      }
+
+      if (shouldShow !== this.showScrollTop) {
+        this.ngZone.run(() => {
+          this.showScrollTop = shouldShow;
+          this.cdRef.markForCheck();
+        });
+      }
+    }
+  }
 
   ngOnInit() {
     const depto = this.router.url.split('/').pop() || '';
@@ -111,6 +138,13 @@ export class Areas implements OnInit {
       }
 
     }, 100);
+  }
+
+  scrollToAreasTop() {
+    const element = this.document.getElementById('areas-start');
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
   }
 
   navigateToProducts(area: any) {
@@ -232,7 +266,7 @@ export class Areas implements OnInit {
   filterByCategory(area: any, cat: any, event: Event) {
     event.stopPropagation();
     area.showMenu = false;
-    
+
     this.ngZone.run(() => {
       this.paginatedAreas = [{
         ...area,
@@ -248,6 +282,17 @@ export class Areas implements OnInit {
         element.scrollIntoView({ behavior: 'smooth', block: 'start' });
       }
     }, 100);
+  }
+
+  onCategorySelectChange(area: any, event: any) {
+    const selectedIndex = event.target.value;
+    if (selectedIndex !== "") {
+      const selectedCat = area.categorias[selectedIndex];
+      // Reuse the existing filter logic
+      this.filterByCategory(area, selectedCat, event);
+      // Reset the select back to the placeholder so the user can select the same category again later if they clear filters
+      event.target.value = "";
+    }
   }
 
 }

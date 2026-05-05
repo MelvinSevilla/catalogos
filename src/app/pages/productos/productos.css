@@ -1,8 +1,4 @@
 /* --- PÁGINA DE AREA PRODS --- */
-.areaprod-page {
-    background-color: #f3f3f3;
-    padding: 1rem;
-}
 
 .areaprod-header {
     background: linear-gradient(90deg, #c42129 0%, #2b395a 100%);
@@ -23,43 +19,50 @@
     margin-top: auto;
     margin-bottom: auto;
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 2rem;
+    grid-template-columns: repeat(1, 1fr);
+    gap: 1rem;
     width: 100%;
+    padding-bottom: 5rem;
 }
 
-@media (min-width: 480px) {
+@media (min-width: 430px) {
     .areaprod-grid {
+        gap: 1rem;
         grid-template-columns: repeat(2, 1fr);
     }
 }
 
 @media (min-width: 768px) {
     .areaprod-grid {
+        gap: 2rem;
         grid-template-columns: repeat(3, 1fr);
     }
 }
 
 @media (min-width: 1024px) {
     .areaprod-grid {
+        gap: 2rem;
         grid-template-columns: repeat(4, 1fr);
     }
 }
 
 @media (min-width: 1400px) {
     .areaprod-grid {
+        gap: 2rem;
         grid-template-columns: repeat(5, 1fr);
     }
 }
 
 @media (min-width: 1600px) {
     .areaprod-grid {
+        gap: 2rem;
         grid-template-columns: repeat(6, 1fr);
     }
 }
 
 @media (min-width: 1800px) {
     .areaprod-grid {
+        gap: 2rem;
         grid-template-columns: repeat(7, 1fr);
     }
 }
@@ -80,7 +83,7 @@
     border-radius: 12px;
     transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     cursor: pointer;
-    width: 100%;
+    width: auto;
     height: fit-content;
 }
 
