@@ -1,8 +1,8 @@
 /* Botones Flotantes */
 .print-actions {
   position: fixed;
-  bottom: 2rem;
-  right: 2rem;
+  bottom: 5rem;
+  left: 1rem;
   z-index: 1000;
   display: flex;
   flex-direction: column;

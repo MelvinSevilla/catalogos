@@ -1,6 +1,7 @@
-import { CommonModule } from '@angular/common';
-import { Component, AfterViewInit, inject, OnInit } from '@angular/core';
+import { CommonModule, isPlatformBrowser } from '@angular/common';
+import { Component, AfterViewInit, inject, OnInit, PLATFORM_ID } from '@angular/core';
 import { Router, RouterLink, RouterOutlet } from "@angular/router";
+import { ProductsService } from '../../services/products-service';
 
 @Component({
   selector: 'app-home',
@@ -12,19 +13,25 @@ import { Router, RouterLink, RouterOutlet } from "@angular/router";
 export class Home implements OnInit {
 
   private router = inject(Router);
+  private productservice = inject(ProductsService);
+  private platformId = inject(PLATFORM_ID);
   showpdfButton = false;
-  showPrice = '0';
 
   ngOnInit(): void {
     if (this.router.url.includes('/pdf')) {
       this.showpdfButton = true;
     }
-    if (this.router.url.includes('/catalogo1') || this.router.url.includes('/localhost:4200')) {
-      this.showPrice = '0';
-    } else if (this.router.url.includes('/catalogo2') || this.router.url.includes('/localhost:4202')) {
-      this.showPrice = '1';
-    } else if (this.router.url.includes('/catalogomayorista') || this.router.url.includes('/localhost:4203')) {
-      this.showPrice = '999';
+
+    if (isPlatformBrowser(this.platformId)) {
+      localStorage.removeItem('allproducts');
+      const url = window.location.href;
+      if (url.includes('/catalogo1') || url.includes('localhost:4201')) {
+        this.productservice.typePrice.next('0');
+      } else if (url.includes('/catalogo2') || url.includes('localhost:4202')) {
+        this.productservice.typePrice.next('1');
+      } else if (url.includes('/catalogomayorista') || url.includes('localhost:4203')) {
+        this.productservice.typePrice.next('999');
+      }
     }
 
   }

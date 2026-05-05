@@ -1,3 +1,39 @@
+<!-- Botones Flotantes de Búsqueda -->
+<div class="search-actions">
+
+    <button class="search-fab" [class.active]="showSearch" (click)="toggleSearch()">
+        <span class="icon" style="margin: auto;">
+
+            <svg *ngIf="!showSearch" style="width: 24px; height: 24px; fill: white !important;"
+                xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                <path
+                    d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352a144 144 0 1 0 0-288 144 144 0 1 0 0 288z" />
+            </svg>
+
+            <svg *ngIf="showSearch" style="width: 24px; height: 24px; fill: white !important;"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 640 640"><!--!Font Awesome Free v7.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2026 Fonticons, Inc.-->
+                <path
+                    d="M504.6 148.5C515.9 134.9 514.1 114.7 500.5 103.4C486.9 92.1 466.7 93.9 455.4 107.5L320 270L184.6 107.5C173.3 93.9 153.1 92.1 139.5 103.4C125.9 114.7 124.1 134.9 135.4 148.5L278.3 320L135.4 491.5C124.1 505.1 125.9 525.3 139.5 536.6C153.1 547.9 173.3 546.1 184.6 532.5L320 370L455.4 532.5C466.7 546.1 486.9 547.9 500.5 536.6C514.1 525.3 515.9 505.1 504.6 491.5L361.7 320L504.6 148.5z" />
+            </svg>
+
+        </span>
+    </button>
+    <button class="show-all-fab" *ngIf="isFiltered" (click)="resetSearch()">
+        MOSTRAR TODO
+    </button>
+</div>
+
+<!-- Barra de Búsqueda -->
+<div class="search-bar-container" [class.show]="showSearch">
+    <div class="search-bar-content">
+        <input type="text" [(ngModel)]="searchTerm" (keyup.enter)="performSearch()"
+            placeholder="Buscar por nombre o código..." class="search-input">
+        <button class="btn-search" (click)="performSearch()">BUSCAR</button>
+        <button class="btn-show-all" *ngIf="isFiltered" (click)="resetSearch()">MOSTRAR TODO</button>
+    </div>
+</div>
+
 <!-- PÁGINAS DE DEPARTAMENTOS (DINÁMICAS Y PAGINADAS) -->
 <div class="no-areas-message" *ngIf="noDataFound">
     No hay áreas para este departamento
@@ -12,13 +48,25 @@
                 <div class="dept-title">{{ departamento.departamento }}</div>
             </div>
             <div class="areas-grid">
-                @for (area of pageDep.areas; track area.name + $index) {
-                <div class="area-item" (click)="navigateToProducts(area)">
-                    <div class="area-card">
+                @for (area of pageDep.areas; track $index) {
+                <div class="area-item" style="position: relative;">
+                    <div class="area-card" (click)="navigateToProducts(area)">
                         <div class="area-image">
                             <img [src]="area.imagenArea || 'hogaris2.jpeg'" [alt]="area.area ">
                         </div>
                         <div class="area-name">{{ area.area }}</div>
+                    </div>
+
+                    <!-- Menú tres puntos -->
+                    <div class="category-menu-container" *ngIf="area.categorias && area.categorias.length > 0">
+                        <button class="menu-dots" [class.active]="area.showMenu"
+                            (click)="toggleCategoryMenu(area, $event)">⋮</button>
+                        <div class="category-dropdown" *ngIf="area.showMenu" (click)="$event.stopPropagation()">
+                            <div class="category-item" *ngFor="let cat of area.categorias"
+                                (click)="filterByCategory(area, cat, $event)">
+                                {{ cat.categoria }}
+                            </div>
+                        </div>
                     </div>
                 </div>
                 }
@@ -36,7 +84,7 @@
                 <div class="areaprod-title">{{ area.area }}</div>
             </div>
 
-            <app-productos [productos]="area.productos"></app-productos>
+            <app-productos *ngIf="area.productos" [productos]="area.productos"></app-productos>
 
         </div>
     </div>
